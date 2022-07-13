@@ -46,5 +46,10 @@ def get():
     return jsonify({"courses": courses})
 
 
+@app.route("/courses/<int:course_id>", methods=["GET"])
+def get_course(course_id):
+    return jsonify({"course": courses[course_id]})
+
+
 if __name__ == "__main__":
     app.run(debug=True)
