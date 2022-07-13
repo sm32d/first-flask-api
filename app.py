@@ -51,5 +51,17 @@ def get_course(course_id):
     return jsonify({"course": courses[course_id]})
 
 
+@app.route("/courses", methods=["POST"])
+def create():
+    course = {
+        "Description": "Natural Language Processing with Python course will take you through the essentialsof text processing all the way up to classifying texts using Machine Learning algorithms.",
+        "course_id": "5",
+        "name": "Natural Language Processing With Python Certification",
+        "price": "visit edureka.co to know more",
+    }
+    courses.append(course)
+    return jsonify({"Created": course})
+
+
 if __name__ == "__main__":
     app.run(debug=True)
