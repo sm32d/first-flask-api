@@ -41,16 +41,19 @@ def index():
     return "Hello, World!"
 
 
+# get all courses
 @app.route("/courses", methods=["GET"])
 def get():
     return jsonify({"courses": courses})
 
 
+# get course using ID
 @app.route("/courses/<int:course_id>", methods=["GET"])
 def get_course(course_id):
     return jsonify({"course": courses[course_id]})
 
 
+# add a new course
 @app.route("/courses", methods=["POST"])
 def create():
     course = {
@@ -63,12 +66,14 @@ def create():
     return jsonify({"Created": course})
 
 
+# update a course
 @app.route("/courses/<int:course_id>", methods=["PUT"])
 def course_update(course_id):
     courses[course_id]["Description"] = "XYZ"
     return jsonify({"course": courses[course_id]})
 
 
+# delete a course
 @app.route("/courses/<int:course_id>", methods=["DELETE"])
 def delete(course_id):
     courses.remove(courses[course_id])
