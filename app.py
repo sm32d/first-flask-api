@@ -63,5 +63,11 @@ def create():
     return jsonify({"Created": course})
 
 
+@app.route("/courses/<int:course_id>", methods=["PUT"])
+def course_update(course_id):
+    courses[course_id]["Description"] = "XYZ"
+    return jsonify({"course": courses[course_id]})
+
+
 if __name__ == "__main__":
     app.run(debug=True)
