@@ -69,5 +69,11 @@ def course_update(course_id):
     return jsonify({"course": courses[course_id]})
 
 
+@app.route("/courses/<int:course_id>", methods=["DELETE"])
+def delete(course_id):
+    courses.remove(courses[course_id])
+    return jsonify({"result": "success"})
+
+
 if __name__ == "__main__":
     app.run(debug=True)
